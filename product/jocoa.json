@@ -1,0 +1,25 @@
+{
+
+    "files": [
+
+        "src/java/awtgl/camera/*.java",
+        "src/java/awtgl/entity/*.java",
+        "src/java/awtgl/entity/tile/*.java",
+        "src/java/awtgl/image/*.java",
+        "src/java/awtgl/math/*.java",
+        "src/java/awtgl/particle/*.java",
+        "src/java/awtgl/window/*.java",
+
+        "src/java/main/*.java"
+
+    ],
+
+    "dependencies": [
+
+        "lib/jbox2d-jbox2d-2.2.1.1.jar"
+
+    ],
+
+    "classfiles": "bin"
+
+}
