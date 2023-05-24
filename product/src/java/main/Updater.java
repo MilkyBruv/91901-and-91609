@@ -58,8 +58,8 @@ public class Updater extends GameUpdater {
             this.rot += 1;
 
         } if (KeyHandler.isKeyPressed(Keys.LEFT)) {
-
             this.rot -= 1;
+
 
         }
 
@@ -70,7 +70,7 @@ public class Updater extends GameUpdater {
 
         Renderer.clear(g);
         
-        Renderer.drawImage(testImage, new Vector2i(20, 20), this.rot, g);
+        Renderer.drawBlendImage(this.testImage, new Vector2i(20, 20), this.rot, g, 5);
 
     }
     
