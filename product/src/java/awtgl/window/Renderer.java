@@ -4,18 +4,10 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
 
 import awtgl.math.Vector2i;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.effect.Glow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public abstract class Renderer {
 
@@ -33,7 +25,15 @@ public abstract class Renderer {
 
     public static BufferedImage getTransparentImage(BufferedImage bufferedImage, float alpha) {
 
-        
+        BufferedImage transpareptImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = (Graphics2D) transpareptImage.getGraphics();
+        AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+
+        g2d.setComposite(ac);
+        g2d.drawImage(bufferedImage, 0, 0, null);
+        g2d.dispose();
+
+        return transpareptImage;
 
     }
 
@@ -44,25 +44,27 @@ public abstract class Renderer {
         AffineTransform backup = new AffineTransform();
         Graphics2D g2d = (Graphics2D) g;
         AffineTransform a = AffineTransform.getRotateInstance(Math.toRadians(rotation), position.x + (bufferedImage.getWidth() / 2), position.y + (bufferedImage.getHeight() / 2));
+        g2d.setTransform(a);
 
         BufferedImage layerImage = new BufferedImage(bufferedImage.getWidth() + 2, bufferedImage.getHeight() + 2, BufferedImage.TYPE_INT_ARGB);
         BufferedImage prevLayerImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
         float alpha = 1.0f / layers;
-        int x = 0, y = 0;
 
         for (int i = layers; i > 0; i--) {
             
             layerImage = new BufferedImage(prevLayerImage.getWidth() + 2, prevLayerImage.getHeight() + 2, BufferedImage.TYPE_INT_ARGB);
             prevLayerImage = layerImage;
 
-            Graphics2D ig2d = (Graphics2D) layerImage.getGraphics();
-            ig2d.drawImage(bufferedImage, 0, 0, layerImage.getWidth(), layerImage.getHeight(), null);
+            float currentAlpha = alpha * i;
 
-            alpha += 1.0f / layers;
+            Graphics2D ig2d = (Graphics2D) layerImage.getGraphics();
+            ig2d.drawImage(Renderer.getTransparentImage(bufferedImage, currentAlpha), 0, 0, layerImage.getWidth(), layerImage.getHeight(), null);
+            ig2d.dispose();
+
+            g2d.drawImage(layerImage, position.x, position.y, null);
 
         }
 
-        g2d.setTransform(a);
         g2d.drawImage(bufferedImage, position.x, position.y, bufferedImage.getWidth(), bufferedImage.getHeight(), null);
         g2d.setTransform(backup);
         g2d.dispose();

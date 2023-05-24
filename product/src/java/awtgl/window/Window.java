@@ -15,6 +15,8 @@ public class Window extends JFrame {
 
     public Window(int width, int height, String title, int mode) {
 
+        System.setProperty("sun.java2d.opengl", "true");
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(title);
 

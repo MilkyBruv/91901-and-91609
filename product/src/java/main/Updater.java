@@ -70,7 +70,7 @@ public class Updater extends GameUpdater {
 
         Renderer.clear(g);
         
-        Renderer.drawBlendImage(this.testImage, new Vector2i(20, 20), this.rot, g, 5);
+        Renderer.drawBlendImage(this.testImage, new Vector2i(20, 20), this.rot, g, 10);
 
     }
     
