@@ -1,0 +1,23 @@
+Card sorting is a user-centered design technique used to gather insights on how users categorize and organize information. It involves presenting a set of cards with individual pieces of content or features, and asking participants to group the cards into categories that make sense to them.
+
+Pros of card sorting for UX:
+
+    User-centered: Card sorting is a user-centered design technique that involves users in the design process, which can lead to a better understanding of user needs and preferences.
+
+    Unbiased: Card sorting is an unbiased method of understanding how users group and categorize information, as it allows users to group the cards in a way that makes sense to them.
+
+    Provides insight: Card sorting can provide valuable insight into how users think about and organize information, which can inform the design of navigation, menus, and content organization.
+
+    Cost-effective: Card sorting can be conducted inexpensively and quickly, making it an efficient way to gather user feedback.
+
+Cons of card sorting for UX:
+
+    Limited sample size: Card sorting can only provide insight into the categorization preferences of a small group of users, which may not be representative of the larger user base.
+
+    Limited context: Card sorting may not take into account the context in which users access information, such as the device they are using or their goals for using the application.
+
+    Potential for bias: The results of card sorting can be influenced by factors such as the order in which the cards are presented or the wording of instructions, which can lead to biased results.
+
+    Lack of depth: Card sorting may not provide deep insights into user behavior or motivations, and should be used in conjunction with other user research techniques for a more complete understanding of user needs.
+
+Overall, card sorting is a useful technique for gaining insight into how users categorize and organize information. However, it should be used in conjunction with other research techniques to gain a more complete understanding of user needs and behaviors.
