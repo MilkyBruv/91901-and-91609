@@ -12,7 +12,7 @@ public class Main {
         Window window = new Window(1280, 720, "Goofy ahh", Window.WINDOWED);
         window.setBackground(new Color(0x000000));
 
-        InnerDisplay innerDisplay = new InnerDisplay(128, 72, window);
+        InnerDisplay innerDisplay = new InnerDisplay(256, 128, window);
         innerDisplay.setBackground(new Color(0x000000));
         
         window.setInnerDisplay(innerDisplay);

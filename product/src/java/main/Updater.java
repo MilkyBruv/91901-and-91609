@@ -22,6 +22,7 @@ public class Updater extends GameUpdater {
 
     int x;
     int y;
+    Vector2i pos;
     BufferedImage testImage;
     Random random;
     int rot = 0;
@@ -32,6 +33,8 @@ public class Updater extends GameUpdater {
 
         this.x = 0;
         this.y = 0;
+
+        this.pos = new Vector2i(20, 20);
         
         this.random = new Random();
 
@@ -50,16 +53,34 @@ public class Updater extends GameUpdater {
     @Override
     public void update() {
 
-        this.x = this.cursorMovementHandler.getPos()[0];
-        this.y = this.cursorMovementHandler.getPos()[1];
+        // this.x = this.cursorMovementHandler.getPos()[0];
+        // this.y = this.cursorMovementHandler.getPos()[1];
 
         if (KeyHandler.isKeyPressed(Keys.RIGHT)) {
 
-            this.rot += 1;
+            this.pos.x += 3;
 
         } if (KeyHandler.isKeyPressed(Keys.LEFT)) {
-            this.rot -= 1;
+        
+            this.pos.x -= 3;
 
+        } if (KeyHandler.isKeyPressed(Keys.UP)) {
+
+            this.pos.y -= 3;
+
+        } if (KeyHandler.isKeyPressed(Keys.DOWN)) {
+
+            this.pos.y += 3;
+
+        }
+
+        if (KeyHandler.isKeyPressed(Keys.R)) {
+
+            this.rot += 1;
+
+        } if (KeyHandler.isKeyPressed(Keys.L)) {
+
+            this.rot -= 1;
 
         }
 
@@ -70,7 +91,8 @@ public class Updater extends GameUpdater {
 
         Renderer.clear(g);
         
-        Renderer.drawBlendImage(this.testImage, new Vector2i(20, 20), this.rot, g, 10);
+        // Renderer.drawBlendImage(this.testImage, this.pos, this.rot, 1, g);
+        Renderer.drawBlendImage(this.testImage, this.pos, this.rot, 40, g);
 
     }
     
