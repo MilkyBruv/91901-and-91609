@@ -164,5 +164,18 @@ public class Vector2f extends Vector {
         this.y /= vec.y.floatValue();
 
     }
+
+
+
+    public Vector getMidPointTo(Vector vec) {
+
+        return new Vector2f(
+
+            (this.x + vec.x.floatValue()) / 2,
+            (this.y + vec.y.floatValue()) / 2
+
+        );
+
+    }
     
 }

@@ -7,6 +7,7 @@ public abstract class Entity {
     
     public Vector2i pos;
     public Vector2i size;
+    public boolean raycastable;
 
     public Updater updater;
 

@@ -15,6 +15,7 @@ import awtgl.window.GameUpdater;
 import awtgl.window.InnerDisplay;
 import awtgl.window.Renderer;
 import awtgl.window.Window;
+import awtgl.window.event.CursorHandler;
 import awtgl.window.event.KeyHandler;
 import awtgl.window.event.Keys;
 import awtgl.window.event.MouseHandler;
@@ -27,6 +28,7 @@ public class Updater extends GameUpdater {
     BufferedImage testImage;
     Random random;
     int rot = 0;
+    CursorHandler cursorHandler;
 
     public Updater(Window window, InnerDisplay innerDisplay) {
         
@@ -48,6 +50,8 @@ public class Updater extends GameUpdater {
             e.printStackTrace();
 
         }
+
+        this.cursorHandler = new CursorHandler(innerDisplay);
 
     }
 
@@ -87,10 +91,18 @@ public class Updater extends GameUpdater {
     @Override
     public void draw(Graphics g) {
 
-        Renderer.clear(g);
-        
-        Renderer.drawLine(new Vector2i(0), MouseHandler.getPosition(), 0xffffff, g);
-        Renderer.drawBlendImage(this.testImage, this.pos, this.rot, 1, g);
+        Renderer.begin(g);
+
+            Renderer.clear();
+            
+            Renderer.drawImage(this.testImage, this.pos, this.rot);
+            
+            Renderer.drawLine(new Vector2i(0, 0), this.cursorHandler.getCursorPosition(), 0xffffff);
+            Renderer.drawLine(new Vector2i(256, 128), this.cursorHandler.getCursorPosition(), 0xffffff);
+            Renderer.drawLine(new Vector2i(0, 128), this.cursorHandler.getCursorPosition(), 0xffffff);
+            Renderer.drawLine(new Vector2i(256, 0), this.cursorHandler.getCursorPosition(), 0xffffff);
+
+        Renderer.end();
 
     }
     

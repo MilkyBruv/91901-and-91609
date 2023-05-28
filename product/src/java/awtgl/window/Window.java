@@ -6,6 +6,7 @@ import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 
+import awtgl.window.event.CursorHandler;
 import awtgl.window.event.MouseHandler;
 
 public class Window extends JFrame {
@@ -58,7 +59,7 @@ public class Window extends JFrame {
 
         this.innerDisplay = innerDisplay;
 
-        MouseHandler mouseButtonHandler = new MouseHandler(innerDisplay);
+        MouseHandler mouseButtonHandler = new MouseHandler();
         this.addMouseListener(mouseButtonHandler);
 
         this.add(innerDisplay);

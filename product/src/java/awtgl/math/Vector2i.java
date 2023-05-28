@@ -164,5 +164,18 @@ public class Vector2i extends Vector {
         this.y /= vec.y.intValue();
 
     }
+
+
+
+    public Vector getMidPointTo(Vector vec) {
+
+        return new Vector2i(
+
+            Math.round((this.x + vec.x.floatValue()) / 2),
+            Math.round((this.y + vec.y.floatValue()) / 2)
+
+        );
+
+    }
     
 }
