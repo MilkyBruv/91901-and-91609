@@ -9,6 +9,7 @@
         "src/java/awtgl/math/*.java",
         "src/java/awtgl/particle/*.java",
         "src/java/awtgl/window/*.java",
+        "src/java/awtgl/window/event/*.java",
 
         "src/java/main/*.java"
 

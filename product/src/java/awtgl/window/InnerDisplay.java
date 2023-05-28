@@ -1,6 +1,5 @@
 package awtgl.window;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,14 +15,14 @@ public class InnerDisplay extends JPanel implements Runnable {
     private Window window;
     private Updater updater;
 
-    public int innerX;
-    public int innerY;
-    public int innerHeight;
-    public int innerWidth;
-    public int baseInnerHeight;
-    public int baseInnerWidth;
-    public float scale;
-    public BufferedImage innerDisplayImage;
+    private int innerX;
+    private int innerY;
+    private int innerHeight;
+    private int innerWidth;
+    private int baseInnerHeight;
+    private int baseInnerWidth;
+    private float scale;
+    private BufferedImage innerDisplayImage;
 
     public InnerDisplay(int width, int height, Window window) {
 
@@ -122,6 +121,132 @@ public class InnerDisplay extends JPanel implements Runnable {
 
         return this.window;
 
+    }
+
+
+
+    public Thread getThread() {
+        return thread;
+    }
+
+
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
+
+
+    public void setWindow(Window window) {
+        this.window = window;
+    }
+
+
+
+    public Updater getUpdater() {
+        return updater;
+    }
+
+
+
+    public void setUpdater(Updater updater) {
+        this.updater = updater;
+    }
+
+
+
+    public int getInnerX() {
+        return innerX;
+    }
+
+
+
+    public void setInnerX(int innerX) {
+        this.innerX = innerX;
+    }
+
+
+
+    public int getInnerY() {
+        return innerY;
+    }
+
+
+
+    public void setInnerY(int innerY) {
+        this.innerY = innerY;
+    }
+
+
+
+    public int getInnerHeight() {
+        return innerHeight;
+    }
+
+
+
+    public void setInnerHeight(int innerHeight) {
+        this.innerHeight = innerHeight;
+    }
+
+
+
+    public int getInnerWidth() {
+        return innerWidth;
+    }
+
+
+
+    public void setInnerWidth(int innerWidth) {
+        this.innerWidth = innerWidth;
+    }
+
+
+
+    public int getBaseInnerHeight() {
+        return baseInnerHeight;
+    }
+
+
+
+    public void setBaseInnerHeight(int baseInnerHeight) {
+        this.baseInnerHeight = baseInnerHeight;
+    }
+
+
+
+    public int getBaseInnerWidth() {
+        return baseInnerWidth;
+    }
+
+
+
+    public void setBaseInnerWidth(int baseInnerWidth) {
+        this.baseInnerWidth = baseInnerWidth;
+    }
+
+
+
+    public float getScale() {
+        return scale;
+    }
+
+
+
+    public void setScale(float scale) {
+        this.scale = scale;
+    }
+
+
+
+    public BufferedImage getInnerDisplayImage() {
+        return innerDisplayImage;
+    }
+
+
+
+    public void setInnerDisplayImage(BufferedImage innerDisplayImage) {
+        this.innerDisplayImage = innerDisplayImage;
     }
     
 }

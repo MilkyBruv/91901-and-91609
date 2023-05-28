@@ -1,6 +1,6 @@
-package awtgl.window;
+package awtgl.window.event;
 
-public class Keys {
+public abstract class Keys {
     
     public static final int TAB = 9;
     public static final int ENTER = 10;

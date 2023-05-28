@@ -13,10 +13,11 @@ import awtgl.math.Vector2f;
 import awtgl.math.Vector2i;
 import awtgl.window.GameUpdater;
 import awtgl.window.InnerDisplay;
-import awtgl.window.KeyHandler;
-import awtgl.window.Keys;
 import awtgl.window.Renderer;
 import awtgl.window.Window;
+import awtgl.window.event.KeyHandler;
+import awtgl.window.event.Keys;
+import awtgl.window.event.MouseHandler;
 
 public class Updater extends GameUpdater {
 
@@ -53,9 +54,6 @@ public class Updater extends GameUpdater {
     @Override
     public void update() {
 
-        // this.x = this.cursorMovementHandler.getPos()[0];
-        // this.y = this.cursorMovementHandler.getPos()[1];
-
         if (KeyHandler.isKeyPressed(Keys.RIGHT)) {
 
             this.pos.x += 3;
@@ -91,8 +89,8 @@ public class Updater extends GameUpdater {
 
         Renderer.clear(g);
         
-        // Renderer.drawBlendImage(this.testImage, this.pos, this.rot, 1, g);
-        Renderer.drawBlendImage(this.testImage, this.pos, this.rot, 40, g);
+        Renderer.drawLine(new Vector2i(0), MouseHandler.getPosition(), 0xffffff, g);
+        Renderer.drawBlendImage(this.testImage, this.pos, this.rot, 1, g);
 
     }
     

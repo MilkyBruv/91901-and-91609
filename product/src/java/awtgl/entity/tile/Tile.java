@@ -5,7 +5,7 @@ import main.Updater;
 
 public class Tile extends DisplayEntity {
 
-    public int id;
+    private int id;
 
     public Tile(Updater updater, int id) {
         
@@ -21,6 +21,18 @@ public class Tile extends DisplayEntity {
 
         //
 
+    }
+
+
+
+    public int getId() {
+        return id;
+    }
+
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
