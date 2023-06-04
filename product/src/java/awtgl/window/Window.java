@@ -6,7 +6,6 @@ import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 
-import awtgl.window.event.CursorHandler;
 import awtgl.window.event.MouseHandler;
 
 public class Window extends JFrame {

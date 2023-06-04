@@ -4,8 +4,8 @@ import java.awt.Graphics;
 
 public abstract class GameUpdater {
 
-    private Window window;
-    private InnerDisplay innerDisplay;
+    protected Window window;
+    protected InnerDisplay innerDisplay;
 
     public GameUpdater(Window window, InnerDisplay innerDisplay) {
 

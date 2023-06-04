@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,9 +7,11 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.xml.parsers.ParserConfigurationException;
 
-import awtgl.entity.EntityGroup;
-import awtgl.math.Vector2f;
+import org.xml.sax.SAXException;
+
+import awtgl.map.TMXMap;
 import awtgl.math.Vector2i;
 import awtgl.window.GameUpdater;
 import awtgl.window.InnerDisplay;
@@ -30,7 +31,7 @@ public class Updater extends GameUpdater {
     int rot = 0;
     CursorHandler cursorHandler;
 
-    public EntityGroup<Tile> tiles;
+    // public EntityGroup<Tile> tiles;
 
     public Updater(Window window, InnerDisplay innerDisplay) {
         
@@ -54,6 +55,9 @@ public class Updater extends GameUpdater {
         }
 
         this.cursorHandler = new CursorHandler(innerDisplay);
+
+        TMXMap map = new TMXMap();
+        map.setFile("./src/res/wireframes.tmx");
 
     }
 

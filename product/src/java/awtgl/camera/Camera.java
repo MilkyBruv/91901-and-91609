@@ -11,7 +11,7 @@ public class Camera {
     private Vector2i pos;
     private Vector2i size;
     private EntityGroup<Tile> tiles;
-    private boolean[] lockedAreas = {false, false, false, false};
+    private boolean[] lockedDirsTBLR = {false, false, false, false};
 
     public Camera(Entity target) {
 
@@ -96,14 +96,14 @@ public class Camera {
 
 
 
-    public boolean[] getLockedAreas() {
-        return lockedAreas;
+    public boolean[] getLockedDirsTBLR() {
+        return lockedDirsTBLR;
     }
 
 
 
-    public void setLockedAreas(boolean[] lockedAreas) {
-        this.lockedAreas = lockedAreas;
+    public void setLockedDirsTBLR(boolean[] lockedAreas) {
+        this.lockedDirsTBLR = lockedAreas;
     }
 
 }
