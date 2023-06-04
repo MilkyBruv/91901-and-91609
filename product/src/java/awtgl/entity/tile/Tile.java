@@ -5,7 +5,7 @@ import main.Updater;
 
 public class Tile extends DisplayEntity {
 
-    private int id;
+    protected int id;
 
     public Tile(Updater updater, int id) {
         

@@ -5,9 +5,9 @@ import main.Updater;
 
 public abstract class Entity {
     
-    public Vector2i pos;
-    public Vector2i size;
-    public boolean raycastable;
+    protected Vector2i pos;
+    protected Vector2i size;
+    protected boolean raycastable;
 
     public Updater updater;
 
@@ -20,5 +20,53 @@ public abstract class Entity {
 
 
     public abstract void update();
+
+
+
+    public Vector2i getPos() {
+        return pos;
+    }
+
+
+
+    public void setPos(Vector2i pos) {
+        this.pos = pos;
+    }
+
+
+
+    public Vector2i getSize() {
+        return size;
+    }
+
+
+
+    public void setSize(Vector2i size) {
+        this.size = size;
+    }
+
+
+
+    public boolean isRaycastable() {
+        return raycastable;
+    }
+
+
+
+    public void setRaycastable(boolean raycastable) {
+        this.raycastable = raycastable;
+    }
+
+
+
+    public Updater getUpdater() {
+        return updater;
+    }
+
+
+
+    public void setUpdater(Updater updater) {
+        this.updater = updater;
+    }
 
 }

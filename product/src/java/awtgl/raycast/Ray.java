@@ -15,6 +15,8 @@ public class Ray {
 
         this.caster = caster;
         this.length = 0;
+        this.angleFromNorthToRight = angleFromNorthToRight;
+        this.start = caster.getPos();
 
     }
 

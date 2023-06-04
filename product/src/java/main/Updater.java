@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import awtgl.entity.EntityGroup;
 import awtgl.math.Vector2f;
 import awtgl.math.Vector2i;
 import awtgl.window.GameUpdater;
@@ -18,7 +19,6 @@ import awtgl.window.Window;
 import awtgl.window.event.CursorHandler;
 import awtgl.window.event.KeyHandler;
 import awtgl.window.event.Keys;
-import awtgl.window.event.MouseHandler;
 
 public class Updater extends GameUpdater {
 
@@ -29,6 +29,8 @@ public class Updater extends GameUpdater {
     Random random;
     int rot = 0;
     CursorHandler cursorHandler;
+
+    public EntityGroup<Tile> tiles;
 
     public Updater(Window window, InnerDisplay innerDisplay) {
         
