@@ -1,23 +1,16 @@
 package awtgl.entity;
 
+import java.awt.image.BufferedImage;
+
 import awtgl.math.Vector2i;
-import main.Updater;
 
 public abstract class Entity {
     
     protected Vector2i pos;
+    protected Vector2i drawPos;
     protected Vector2i size;
+    protected BufferedImage image;
     protected boolean raycastable;
-
-    public Updater updater;
-
-    public Entity(Updater updater) {
-
-        this.updater = updater;
-
-    }
-
-
 
     public abstract void update();
 
@@ -59,14 +52,26 @@ public abstract class Entity {
 
 
 
-    public Updater getUpdater() {
-        return updater;
+    public Vector2i getDrawPos() {
+        return drawPos;
     }
 
 
 
-    public void setUpdater(Updater updater) {
-        this.updater = updater;
+    public void setDrawPos(Vector2i drawPos) {
+        this.drawPos = drawPos;
     }
 
+
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+    
 }

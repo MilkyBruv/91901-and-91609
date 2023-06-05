@@ -1,22 +1,19 @@
 package awtgl.entity.tile;
 
-import awtgl.entity.DisplayEntity;
-import main.Updater;
+import awtgl.entity.Entity;
 
-public class Tile extends DisplayEntity {
+public class Tile extends Entity {
 
     protected int id;
 
-    public Tile(Updater updater, int id) {
+    public Tile(int id) {
         
-        super(updater);
         this.id = id;
         
     }
     
     
     
-    @Override
     public void update() {
 
         //

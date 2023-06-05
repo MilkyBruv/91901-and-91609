@@ -14,7 +14,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import awtgl.entity.Entity;
+import awtgl.entity.EntityGroup;
+import awtgl.entity.tile.Tile;
 import awtgl.math.Vector2i;
+import awtgl.window.GameUpdater;
 
 public class TMXMap {
     
@@ -38,7 +42,10 @@ public class TMXMap {
         Document document = builder.parse(this.tmxFile);
         document.getDocumentElement().normalize();
 
-        NodeList nodeList = document.getElementsByTagName("data");
+        NodeList nodeList = document.getChildNodes();
+
+        this.map = document.getElementsByTagName("data").item(0).getTextContent();
+        System.out.println(this.map);
 
         this.size = new Vector2i(
             
@@ -49,8 +56,8 @@ public class TMXMap {
 
         this.tiledSize = new Vector2i(
             
-            Integer.parseInt(nodeList.item(0).getAttributes().getNamedItem("tiledwidth").getNodeValue()),
-            Integer.parseInt(nodeList.item(0).getAttributes().getNamedItem("tiledheight").getNodeValue())
+            Integer.parseInt(nodeList.item(0).getAttributes().getNamedItem("tilewidth").getNodeValue()),
+            Integer.parseInt(nodeList.item(0).getAttributes().getNamedItem("tileheight").getNodeValue())
 
         );
         
@@ -58,22 +65,36 @@ public class TMXMap {
 
 
 
-    public void createMap() throws ParserConfigurationException, SAXException, IOException {
+    public EntityGroup<Entity> createMap() {
 
-        this.parseFile();
+        try {
+            this.parseFile();
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         int x;
         int y;
 
-        for (y = 0; y < lines.length; y++) {
+        EntityGroup<Entity> entities = new EntityGroup<Entity>() {};
+
+        for (y = 0; y < this.tiledSize.y; y++) {
             
-            for (x = 0; x < lines.length; x++) {
+            for (x = 0; x < this.tiledSize.x; x++) {
+
+                System.out.println(Integer.parseInt(this.map.split("\n")[y].charAt(x) + ""));
             
-            
+                // Tile newTile = new Tile(Integer.parseInt(this.map.split("\n")[y].charAt(x) + ""));
+                // newTile.setPos(new Vector2i(x, y));
+
+                // entities.add(newTile);
 
             }
 
         }
+
+        return entities;
 
     }
 

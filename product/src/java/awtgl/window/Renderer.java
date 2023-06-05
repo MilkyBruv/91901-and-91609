@@ -10,13 +10,14 @@ import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 
+import awtgl.entity.Entity;
 import awtgl.math.Vector2i;
 
 public abstract class Renderer {
 
     private static Graphics2D g2d;
 
-    public static void begin(Graphics g) {
+    public static final void begin(Graphics g) {
 
         g2d = (Graphics2D) g;
 
@@ -24,7 +25,7 @@ public abstract class Renderer {
 
 
 
-    public static void end() {
+    public static final void end() {
 
         g2d.dispose();
 
@@ -32,7 +33,7 @@ public abstract class Renderer {
 
 
 
-    public static void clear() {
+    public static final void clear() {
         
         g2d.setColor(g2d.getBackground());
         g2d.fillRect(0, 0, 256, 128);
@@ -41,7 +42,15 @@ public abstract class Renderer {
 
 
 
-    public static BufferedImage getTransparentImage(BufferedImage bufferedImage, float alpha) {
+    public static final void drawEntity(Entity entity) {
+
+        g2d.drawImage(entity.getImage(), entity.getDrawPos().x, entity.getDrawPos().y, null);
+
+    }
+
+
+
+    public static final BufferedImage getTransparentImage(BufferedImage bufferedImage, float alpha) {
 
         BufferedImage transparentImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
         AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
@@ -55,10 +64,11 @@ public abstract class Renderer {
 
 
 
-    public static void drawBlendImage(BufferedImage bufferedImage, Vector2i position, int rotation, int layers) {
+    public static final void drawBlendImage(BufferedImage bufferedImage, Vector2i position, int rotation, int layers) {
     
         AffineTransform backup = new AffineTransform();
         AffineTransform a = AffineTransform.getRotateInstance(Math.toRadians(rotation), position.x + (bufferedImage.getWidth() / 2), position.y + (bufferedImage.getHeight() / 2));
+        
         g2d.setTransform(a);
 
         int incr = 4;
@@ -66,6 +76,7 @@ public abstract class Renderer {
 
         BufferedImage layerImage = new BufferedImage(bufferedImage.getWidth() + incr, bufferedImage.getHeight() + incr, BufferedImage.TYPE_INT_ARGB);
         BufferedImage prevLayerImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        
         float alpha = 1.0f / layers;
 
         for (int i = layers; i > 0; i--) {
@@ -112,7 +123,7 @@ public abstract class Renderer {
     
     
 
-    public static void drawImage(BufferedImage bufferedImage, Vector2i position, int rotation) {
+    public static final void drawImage(BufferedImage bufferedImage, Vector2i position, int rotation) {
     
         AffineTransform backup = new AffineTransform();
         AffineTransform a = AffineTransform.getRotateInstance(Math.toRadians(rotation), position.x + (bufferedImage.getWidth() / 2), position.y + (bufferedImage.getHeight() / 2));
@@ -125,7 +136,7 @@ public abstract class Renderer {
 
 
 
-    public static void drawImage(BufferedImage bufferedImage, Vector2i position, Vector2i size, int rotation) {
+    public static final void drawImage(BufferedImage bufferedImage, Vector2i position, Vector2i size, int rotation) {
     
         AffineTransform backup = new AffineTransform();
         AffineTransform a = AffineTransform.getRotateInstance(Math.toRadians(rotation), position.x + (size.x / 2), position.y + (size.y / 2));
@@ -138,7 +149,7 @@ public abstract class Renderer {
 
 
 
-    public static void drawLine(Vector2i position1, Vector2i position2, int colour) {
+    public static final void drawLine(Vector2i position1, Vector2i position2, int colour) {
     
         g2d.setColor(new Color(colour));
         g2d.drawLine(position1.x, position1.y, position2.x, position2.y);
@@ -147,7 +158,7 @@ public abstract class Renderer {
 
 
 
-    public static void drawRect(Vector2i position, Vector2i size, int rotation, int colour) {
+    public static final void drawRect(Vector2i position, Vector2i size, int rotation, int colour) {
     
         AffineTransform a = AffineTransform.getRotateInstance(Math.toRadians(rotation), position.x + (size.x / 2), position.y + (size.y / 2));
 
@@ -159,7 +170,7 @@ public abstract class Renderer {
 
 
 
-    public static void drawCircle(Vector2i position, int radius, int rotation, int colour) {
+    public static final void drawCircle(Vector2i position, int radius, int rotation, int colour) {
     
         AffineTransform a = AffineTransform.getRotateInstance(Math.toRadians(rotation), position.x + (radius), position.y + (radius));
 
@@ -171,7 +182,7 @@ public abstract class Renderer {
 
 
 
-    public static void drawPoint(Vector2i position, int colour) {
+    public static final void drawPoint(Vector2i position, int colour) {
     
         g2d.setColor(new Color(colour));
         g2d.drawLine(position.x, position.y, position.x, position.y);

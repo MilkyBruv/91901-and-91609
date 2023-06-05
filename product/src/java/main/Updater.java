@@ -11,6 +11,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import awtgl.entity.Entity;
+import awtgl.entity.EntityGroup;
 import awtgl.map.TMXMap;
 import awtgl.math.Vector2i;
 import awtgl.window.GameUpdater;
@@ -30,8 +32,9 @@ public class Updater extends GameUpdater {
     Random random;
     int rot = 0;
     CursorHandler cursorHandler;
+    TMXMap map;
 
-    // public EntityGroup<Tile> tiles;
+    public EntityGroup<Entity> entities;
 
     public Updater(Window window, InnerDisplay innerDisplay) {
         
@@ -56,8 +59,10 @@ public class Updater extends GameUpdater {
 
         this.cursorHandler = new CursorHandler(innerDisplay);
 
-        TMXMap map = new TMXMap();
-        map.setFile("./src/res/wireframes.tmx");
+        this.map = new TMXMap();
+        this.map.setFile("./src/res/wireframes.tmx");
+
+        this.entities = this.map.createMap();
 
     }
 
@@ -107,6 +112,12 @@ public class Updater extends GameUpdater {
             Renderer.drawLine(new Vector2i(256, 128), this.cursorHandler.getCursorPosition(), 0xffffff);
             Renderer.drawLine(new Vector2i(0, 128), this.cursorHandler.getCursorPosition(), 0xffffff);
             Renderer.drawLine(new Vector2i(256, 0), this.cursorHandler.getCursorPosition(), 0xffffff);
+
+            for (Entity entity : entities) {
+                
+                Renderer.drawEntity(entity);
+
+            }
 
         Renderer.end();
 
