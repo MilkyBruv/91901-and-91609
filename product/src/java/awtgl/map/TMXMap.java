@@ -18,7 +18,6 @@ import awtgl.entity.Entity;
 import awtgl.entity.EntityGroup;
 import awtgl.entity.tile.Tile;
 import awtgl.math.Vector2i;
-import awtgl.window.GameUpdater;
 
 public class TMXMap {
     
@@ -27,14 +26,6 @@ public class TMXMap {
     private Vector2i tiledSize;
     private String map;
     private File tmxFile;
-
-    public void setFile(String file) {
-
-        this.tmxFile = new File(file);
-
-    }
-
-
 
     private void parseFile() throws ParserConfigurationException, SAXException, IOException {
 
@@ -68,10 +59,13 @@ public class TMXMap {
     public EntityGroup<Entity> createMap() {
 
         try {
+
             this.parseFile();
+
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
+
         }
 
         int x;
@@ -83,7 +77,7 @@ public class TMXMap {
             
             for (x = 0; x < this.tiledSize.x; x++) {
 
-                System.out.println(Integer.parseInt(this.map.split("\n")[y].charAt(x) + ""));
+                System.out.println(Integer.parseInt(this.map.split("\n")[y].replace(",", "").charAt(x) + ""));
             
                 // Tile newTile = new Tile(Integer.parseInt(this.map.split("\n")[y].charAt(x) + ""));
                 // newTile.setPos(new Vector2i(x, y));
@@ -96,6 +90,66 @@ public class TMXMap {
 
         return entities;
 
+    }
+
+
+
+    public Vector2i getPos() {
+        return pos;
+    }
+
+
+
+    public void setPos(Vector2i pos) {
+        this.pos = pos;
+    }
+
+
+
+    public Vector2i getSize() {
+        return size;
+    }
+
+
+
+    public void setSize(Vector2i size) {
+        this.size = size;
+    }
+
+
+
+    public Vector2i getTiledSize() {
+        return tiledSize;
+    }
+
+
+
+    public void setTiledSize(Vector2i tiledSize) {
+        this.tiledSize = tiledSize;
+    }
+
+
+
+    public String getMap() {
+        return map;
+    }
+
+
+
+    public void setMap(String map) {
+        this.map = map;
+    }
+
+
+
+    public File getTmxFile() {
+        return tmxFile;
+    }
+
+
+
+    public void setTmxFile(File tmxFile) {
+        this.tmxFile = tmxFile;
     }
 
 }

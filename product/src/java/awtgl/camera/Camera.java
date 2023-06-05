@@ -34,8 +34,6 @@ public class Camera {
 
         this.alignPos();
 
-
-
     }
 
 

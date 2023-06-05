@@ -60,7 +60,7 @@ public class Updater extends GameUpdater {
         this.cursorHandler = new CursorHandler(innerDisplay);
 
         this.map = new TMXMap();
-        this.map.setFile("./src/res/wireframes.tmx");
+        this.map.setTmxFile(new File("./src/res/wireframes.tmx"));
 
         this.entities = this.map.createMap();
 
